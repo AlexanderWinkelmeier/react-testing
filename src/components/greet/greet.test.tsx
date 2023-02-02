@@ -12,10 +12,10 @@ describe('Greet', () => {
   });
 });
 
-// describe('Nested', () => {
-//   test('renders with a name', () => {
-//     render(<Greet name="John" />);
-//     const textElement = screen.getByText('Hello John');
-//     expect(textElement).toBeInTheDocument();
-//   });
-// });
+describe('Nested', () => {
+  test('renders with a name', () => {
+    render(<Greet name="John" />);
+    const textElement = screen.getByText('Hello John');
+    expect(textElement).toBeInTheDocument();
+  });
+});
