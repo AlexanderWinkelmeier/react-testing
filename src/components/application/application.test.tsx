@@ -11,6 +11,10 @@ describe('Application', () => {
     });
     expect(pageHeading).toBeInTheDocument();
 
+    // prüft die Existenz eines p-Tags anhand seines innerHtml-Textes
+    const paragraphElement = screen.getByText('All fields are mandatory');
+    expect(paragraphElement).toBeInTheDocument();
+
     // prüft die Existen einer Überschrift mit dem Level 2, d.h. h2-Tag
     const sectionHeading = screen.getByRole('heading', {
       level: 2,
