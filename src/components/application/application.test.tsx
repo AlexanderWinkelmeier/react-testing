@@ -32,6 +32,10 @@ describe('Application', () => {
     });
     expect(nameElement2).toBeInTheDocument();
 
+    // prüft die Existenz des Input-Elements über den Text seines Placeholder-Attributs
+    const nameElement3 = screen.getByPlaceholderText('Fullname');
+    expect(nameElement3).toBeInTheDocument();
+
     // prüft die Existenz des Text-Area-Elements (hat die Rolle 'textbox'!)
     // mit dem Label-Inhalt 'Bio'
     const bioElement = screen.getByRole('textbox', {
