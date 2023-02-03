@@ -24,6 +24,14 @@ describe('Application', () => {
     });
     expect(nameElement).toBeInTheDocument();
 
+    // prüft die Existenz des Input-Elements über den Text seines Label
+    // da es diesen mehrmals gibt, wird ein selector ausgewählt, der anzeigt, dass das zum Label
+    // gehörende input-Element gemeint ist
+    const nameElement2 = screen.getByLabelText('Name', {
+      selector: 'input',
+    });
+    expect(nameElement2).toBeInTheDocument();
+
     // prüft die Existenz des Text-Area-Elements (hat die Rolle 'textbox'!)
     // mit dem Label-Inhalt 'Bio'
     const bioElement = screen.getByRole('textbox', {
@@ -35,9 +43,15 @@ describe('Application', () => {
     const jobLocationElement = screen.getByRole('combobox');
     expect(jobLocationElement).toBeInTheDocument();
 
-    // prüft die Existen der Checkbox
+    // prüft die Existenz der Checkbox
     const termsElement = screen.getByRole('checkbox');
     expect(termsElement).toBeInTheDocument();
+
+    // prüft die Existenz der Checkbox über den Text seines Labels
+    const termsElement2 = screen.getByLabelText(
+      'I agree to the terms and conditions'
+    );
+    expect(termsElement2).toBeInTheDocument();
 
     // prüft die Existenz des Submit-Buttons
     const submitButtonElement = screen.getByRole('button');
