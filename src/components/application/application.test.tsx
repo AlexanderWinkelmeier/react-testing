@@ -23,6 +23,10 @@ describe('Application', () => {
     const imageElement = screen.getByAltText('a person with a laptop');
     expect(imageElement).toBeInTheDocument();
 
+    // prüft die Existenz eines div-Elements anhand seines data-testid-Attribut-Inhalts
+    const customElement = screen.getByTestId('custom-element');
+    expect(customElement).toBeInTheDocument();
+
     // prüft die Existen einer Überschrift mit dem Level 2, d.h. h2-Tag
     const sectionHeading = screen.getByRole('heading', {
       level: 2,
