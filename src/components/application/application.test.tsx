@@ -15,6 +15,10 @@ describe('Application', () => {
     const paragraphElement = screen.getByText('All fields are mandatory');
     expect(paragraphElement).toBeInTheDocument();
 
+    // prüft die Existenz eines Image-Elements anhand seines alt-Attribut-Inhalts
+    const imageElement = screen.getByAltText('a person with a laptop');
+    expect(imageElement).toBeInTheDocument();
+
     // prüft die Existen einer Überschrift mit dem Level 2, d.h. h2-Tag
     const sectionHeading = screen.getByRole('heading', {
       level: 2,
