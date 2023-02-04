@@ -17,4 +17,22 @@ describe('skills', () => {
     const listItemElements = screen.getAllByRole('listitem');
     expect(listItemElements).toHaveLength(skills.length);
   });
+
+  // prüft, ob sich der Login-Button im DOM befindet
+  test('renders Login button', () => {
+    render(<Skills skills={skills} />);
+    const loginButton = screen.getByRole('button', {
+      name: 'Login',
+    });
+    expect(loginButton).toBeInTheDocument();
+  });
+
+  // prüft, ob der Start-Learning-Button sich NICHT im DOM befindet
+  test('Start Learning button is not rendered', () => {
+    render(<Skills skills={skills} />);
+    const startLearningButton = screen.queryByRole('button', {
+      name: 'Start learning',
+    });
+    expect(startLearningButton).not.toBeInTheDocument();
+  });
 });
