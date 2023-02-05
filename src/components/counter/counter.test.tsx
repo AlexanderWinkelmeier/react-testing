@@ -46,4 +46,51 @@ describe('Counter', () => {
     const countElement = screen.getByRole('heading');
     expect(countElement).toHaveTextContent('2');
   });
+
+  test('renders a count of 10 after clicking the set button', async () => {
+    // einen User aufsetzen
+    user.setup();
+    // die Counter-Komponente rendern
+    render(<Counter />);
+    // prüfen, ob das Input-Element vom Typ number im DOM ist
+    const amountInput = screen.getByRole('spinbutton');
+    // in das Input-Feld die Zahl 10 einfügen/schreiben (type)
+    await user.type(amountInput, '10');
+    // prüfen, ob das Input-Element den Wert 10 enthält
+    expect(amountInput).toHaveValue(10);
+
+    // prüfen, ob der Set-Button im DOM ist
+    const setButton = screen.getByRole('button', {
+      name: 'Set',
+    });
+    expect(setButton).toBeInTheDocument();
+    // den Button drücken
+    await user.click(setButton);
+    // das heading-Tag finden und prüfen, ob es den innerHTML-Wert 10 hat
+    const countElement = screen.getByRole('heading');
+    expect(countElement).toHaveTextContent('10');
+  });
+  test('elements are focused in the right order', async () => {
+    // User aufsetzen
+    user.setup();
+    // Counter-Komponente rendern
+    render(<Counter />);
+    // die zwei Buttons und das Input-Element im DOM finden
+    const incrementButton = screen.getByRole('button', {
+      name: 'Increment',
+    });
+    const amountInput = screen.getByRole('spinbutton');
+    const setButton = screen.getByRole('button', {
+      name: 'Set',
+    });
+    // dreimal hintereinander die Tabulator-Taste drücken und überprüfen,
+    // ob zuerst der increment-Button, dann das Input-Element und schließlich
+    // der setButton fokusiert werden
+    await user.tab();
+    expect(incrementButton).toHaveFocus();
+    await user.tab();
+    expect(amountInput).toHaveFocus();
+    await user.tab();
+    expect(setButton).toHaveFocus();
+  });
 });
