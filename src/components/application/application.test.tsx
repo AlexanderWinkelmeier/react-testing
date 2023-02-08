@@ -80,5 +80,7 @@ describe('Application', () => {
     // prüft die Existenz des Submit-Buttons
     const submitButtonElement = screen.getByRole('button');
     expect(submitButtonElement).toBeInTheDocument();
+    // prüft ob der Submit-Button disabled ist
+    expect(submitButtonElement).toBeDisabled();
   });
 });
