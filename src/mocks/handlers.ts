@@ -1,5 +1,5 @@
 // rest, da hier eine REST-API gemockt wird
-import { rest } from 'msw';
+import { rest } from 'msw'
 
 export const handlers = [
   // echte http-Adresse: 'https://jsonplaceholder.typicode.com/users'
@@ -18,6 +18,6 @@ export const handlers = [
           name: 'Michael Caine',
         },
       ])
-    );
+    )
   }),
-];
+]
